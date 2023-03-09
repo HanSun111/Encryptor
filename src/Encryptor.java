@@ -78,8 +78,14 @@ public class Encryptor
      */
     public String encryptMessage(String message)
     {
-
-        return message;
+        String s = "";
+        int n = numCols * numRows;
+        for(int i = 0; i < letterBlock.length; i++) {
+            fillBlock(message);
+            message = message.substring(n);
+            s += encryptBlock();
+        }
+        return s;
     }
 
     /**  Decrypts an encrypted message. All filler 'A's that may have been
