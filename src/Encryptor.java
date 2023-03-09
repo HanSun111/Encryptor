@@ -82,8 +82,9 @@ public class Encryptor
         int n = numCols * numRows;
         for(int i = 0; i < letterBlock.length; i++) {
             fillBlock(message);
-            message = message.substring(n);
             s += encryptBlock();
+            message = message.substring(n);
+
         }
         return s;
     }
