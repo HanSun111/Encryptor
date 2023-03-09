@@ -71,7 +71,7 @@ public class Encryptor
     }
 
     /** Encrypts a message.
-     *
+
      *  @param message the string to be encrypted
      *
      *  @return the encrypted message; if message is the empty string, returns the empty string
