@@ -40,7 +40,8 @@ public class Encryptor
         }
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
-                letterBlock[i][j] = str.substring(i + j, i + j + 1);
+                letterBlock[i][j] = str.substring(0, 1);
+                str = str.substring(1);
             }
         }
     }
@@ -77,8 +78,8 @@ public class Encryptor
      */
     public String encryptMessage(String message)
     {
-        /* to be implemented in part (c) */
-        return "";
+
+        return message;
     }
 
     /**  Decrypts an encrypted message. All filler 'A's that may have been
