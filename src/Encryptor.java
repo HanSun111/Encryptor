@@ -33,7 +33,7 @@ public class Encryptor
     public void fillBlock(String str) {
         if (str.length() < numRows * numCols) {
             StringBuilder strBuilder = new StringBuilder(str);
-            for(int i = 0; i < numRows * numCols; i ++){
+            for(int i = 0; i < numRows * numCols - str.length(); i ++){
                 strBuilder.append("A");
             }
             str = strBuilder.toString();
@@ -80,11 +80,16 @@ public class Encryptor
     {
         String s = "";
         int n = numCols * numRows;
-        for(int i = 0; i < letterBlock.length; i++) {
+        int x = message.length() / n;
+        if(message.length() % n != 0){
+            x++;
+        }
+        for(int i = 0; i < x; i++) {
             fillBlock(message);
             s += encryptBlock();
-            message = message.substring(n);
-
+            if(message.length() > n) {
+                message = message.substring(n);
+            }
         }
         return s;
     }
@@ -111,9 +116,8 @@ public class Encryptor
      *        (e.g. a method to decrypt each section of the decrypted message,
      *         similar to how encryptBlock was used)
      */
-    public String decryptMessage(String encryptedMessage)
-    {
-        /* to be implemented in part (d) */
-        return "";
+    public String decryptMessage(String encryptedMessage) {
+
     }
+
 }
