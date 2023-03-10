@@ -108,7 +108,7 @@ public class Encryptor
      *                 initialized with the same number of rows and columns
      *                 as was used for the Encryptor object used for encryption.
      *
-     *   @param encryptedMessage  the encrypted message to decrypt
+     *   @param message  the encrypted message to decrypt
      *
      *   @return  the decrypted, original message (which had been encrypted)
      *
@@ -116,8 +116,25 @@ public class Encryptor
      *        (e.g. a method to decrypt each section of the decrypted message,
      *         similar to how encryptBlock was used)
      */
-    public String decryptMessage(String encryptedMessage) {
+    public String decryptMessage(String message) {
+    String[][] reverse = new String[numCols][numRows];
 
     }
+    public String decryptBlock()
+    {
+        String encrypted= "";
+        String[][] flipped = new String[numCols][numRows];
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                flipped[j][i] = letterBlock[i][j];
+            }
+        }
+        for (int i = 0; i < flipped.length; i++) {
+            for (int j = 0; j < flipped[0].length; j++) {
+                encrypted += flipped[i][j];
+            }
+        }
 
+        return encrypted;
+    }
 }
