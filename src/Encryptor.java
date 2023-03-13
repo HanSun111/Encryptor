@@ -117,24 +117,26 @@ public class Encryptor
      *         similar to how encryptBlock was used)
      */
     public String decryptMessage(String message) {
-    String[][] reverse = new String[numCols][numRows];
+    int x = message.length() / (numCols * numRows);
 
     }
-    public String decryptBlock()
-    {
-        String encrypted= "";
-        String[][] flipped = new String[numCols][numRows];
+    public String decryptBlock() {
+        StringBuilder s = new StringBuilder();
+        String[][] reverse = new String[numCols][numRows];
         for (int i = 0; i < numRows; i++) {
             for (int j = 0; j < numCols; j++) {
-                flipped[j][i] = letterBlock[i][j];
+                reverse[j][i] = letterBlock[i][j];
+                s.append(reverse[j][i]);
             }
         }
-        for (int i = 0; i < flipped.length; i++) {
-            for (int j = 0; j < flipped[0].length; j++) {
-                encrypted += flipped[i][j];
-            }
-        }
+        return s.toString();
+    }
 
-        return encrypted;
+    public String deleteA(String m){
+        for (int i = m.length() - 1; i > 0; i--) {
+            if(m.charAt(i) == 'A'){
+
+            }
+        }
     }
 }
