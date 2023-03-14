@@ -108,7 +108,7 @@ public class Encryptor
      *                 initialized with the same number of rows and columns
      *                 as was used for the Encryptor object used for encryption.
      *
-     *   @param message  the encrypted message to decrypt
+     *   @param  encryptedMessage the encrypted message to decrypt
      *
      *   @return  the decrypted, original message (which had been encrypted)
      *
@@ -116,27 +116,34 @@ public class Encryptor
      *        (e.g. a method to decrypt each section of the decrypted message,
      *         similar to how encryptBlock was used)
      */
-    public String decryptMessage(String message) {
-    int x = message.length() / (numCols * numRows);
+    public String decryptMessage(String encryptedMessage) {
+        String[][] decryption = new String[numRows][numCols];
+        int index = 0;
+        String originalMessage = "";
+        int num = encryptedMessage.length() / (numRows * numCols);
 
-    }
-    public String decryptBlock() {
-        StringBuilder s = new StringBuilder();
-        String[][] reverse = new String[numCols][numRows];
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < numCols; j++) {
-                reverse[j][i] = letterBlock[i][j];
-                s.append(reverse[j][i]);
+        if((encryptedMessage.length() % (numRows * numCols)) != 0) {
+            num ++;
+        }
+
+        for (int k = 0; k < num; k ++) {
+            for (int i = 0; i < numCols; i++) {
+                for (int j = 0; j < numRows; j++) {
+                    decryption[j][i] = encryptedMessage.substring(index,
+                            index++);
+                    index++;
+                }
+            }
+            for (int i = 0; i < numRows; i++) {
+                for (int j = 0; j < numCols; j++) {
+                    originalMessage = originalMessage + decryption[i][j];
+                }
+            }
+            while (originalMessage.charAt(originalMessage.length() - 1) == 'A') {
+                originalMessage = originalMessage.substring(0, originalMessage.length() - 1);
             }
         }
-        return s.toString();
+return originalMessage;
     }
 
-    public String deleteA(String m){
-        for (int i = m.length() - 1; i > 0; i--) {
-            if(m.charAt(i) == 'A'){
-
-            }
-        }
     }
-}
